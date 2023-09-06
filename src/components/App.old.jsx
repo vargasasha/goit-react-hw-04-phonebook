@@ -33,14 +33,14 @@ export class App extends Component {
   //   }
   // }
 
-  componentDidUpdate(prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem(
-        localStorageKey,
-        JSON.stringify(this.state.contacts)
-      );
-    }
-  }
+  // componentDidUpdate(prevState) {
+  //   if (prevState.contacts !== this.state.contacts) {
+  //     localStorage.setItem(
+  //       localStorageKey,
+  //       JSON.stringify(this.state.contacts)
+  //     );
+  //   }
+  // }
 
   // onAddContact = newContact => {
   //   if (

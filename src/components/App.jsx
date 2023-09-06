@@ -13,21 +13,22 @@ const initialContacts = [
 const localStorageKey = 'contacts';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(initialContacts);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
     const storageContacts = localStorage.getItem(localStorageKey);
 
     if (storageContacts !== null) {
-      const savedContacts = JSON.parse(localStorage.getItem(localStorageKey));
 
+      const savedContacts = JSON.parse(localStorage.getItem(localStorageKey));
       setContacts(savedContacts);
-    } else {
-      localStorage.setItem('contacts', JSON.stringify(initialContacts));
-      setContacts(initialContacts);
-    }
+    } 
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(contacts));
+  }, [contacts]);
 
   const onAddContact = newContact => {
     if (
