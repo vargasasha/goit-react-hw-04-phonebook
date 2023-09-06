@@ -42,41 +42,41 @@ export class App extends Component {
     }
   }
 
-  onAddContact = newContact => {
-    if (
-      this.state.contacts.some(
-        contact =>
-          contact.name.toLocaleLowerCase() ===
-          newContact.name.toLocaleLowerCase()
-      )
-    ) {
-      alert(`${newContact.name} is already in contacts`);
-    } else {
-      this.setState(prevState => {
-        return {
-          contacts: [...prevState.contacts, newContact],
-        };
-      });
-    }
-  };
+  // onAddContact = newContact => {
+  //   if (
+  //     this.state.contacts.some(
+  //       contact =>
+  //         contact.name.toLocaleLowerCase() ===
+  //         newContact.name.toLocaleLowerCase()
+  //     )
+  //   ) {
+  //     alert(`${newContact.name} is already in contacts`);
+  //   } else {
+  //     this.setState(prevState => {
+  //       return {
+  //         contacts: [...prevState.contacts, newContact],
+  //       };
+  //     });
+  //   }
+  // };
 
-  onFilterName = filterName => {
-    this.setState(() => {
-      return {
-        filter: filterName,
-      };
-    });
-  };
+  // onFilterName = filterName => {
+  //   this.setState(() => {
+  //     return {
+  //       filter: filterName,
+  //     };
+  //   });
+  // };
 
-  onDeleteContact = oldContact => {
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.filter(
-          contact => contact.id !== oldContact
-        ),
-      };
-    });
-  };
+  // onDeleteContact = oldContact => {
+  //   this.setState(prevState => {
+  //     return {
+  //       contacts: prevState.contacts.filter(
+  //         contact => contact.id !== oldContact
+  //       ),
+  //     };
+  //   });
+  // };
 
   render() {
     const visibleContacts = this.state.contacts.filter(contact =>
