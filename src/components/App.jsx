@@ -20,15 +20,25 @@ export const App = () => {
     const storageContacts = localStorage.getItem(localStorageKey);
 
     if (storageContacts !== null) {
-
       const savedContacts = JSON.parse(localStorage.getItem(localStorageKey));
       setContacts(savedContacts);
-    } 
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(localStorageKey, JSON.stringify(contacts));
   }, [contacts]);
+
+   useEffect(() => {
+     localStorage.setItem(localStorageKey, JSON.stringify(contacts));
+   }, [contacts]);
+  
+  const getVisibleContacts = () => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()))
+  };
+  
+  const visibleContacts = getVisibleContacts();
 
   const onAddContact = newContact => {
     if (
@@ -61,7 +71,7 @@ export const App = () => {
 
       <h2>Contacts </h2>
       <Filter filter={filter} onFilter={onFilterName} />
-      <ContactList contacts={contacts} onDelete={onDeleteContact} />
+      <ContactList contacts={visibleContacts} onDelete={onDeleteContact} />
     </div>
   );
 };
